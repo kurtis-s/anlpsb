@@ -1,0 +1,16 @@
+Package: anlpsb
+Type: Package
+Title: ANLP-SB Model for Count Data
+Version: 0.1.0
+Author: Kurtis Shuler 
+Maintainer: Kurtis Shuler <kshuler@ucsc.edu>
+Description: Implementation of the ANLP-SB model described in the companion text
+    "A Bayesian Sparse Multivariate Regression Model with Asymmetric Nonlocal
+    Priors for Microbiome Data"
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Depends: RcppTN
+LinkingTo: Rcpp, RcppTN
+Imports: Rcpp, RcppTN, arm
+RoxygenNote: 6.1.0
