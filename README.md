@@ -3,7 +3,7 @@ ANLP-SB is a Bayesian sparse multivariate regression model with variable selecti
 Asymmetric Nonlocal Priors for Microbiome Data*.
 
 ## Installation
-After installing devtools run:
+After installing [devtools](https://github.com/r-lib/devtools) run:
 ```r
 library(devtools)
 install_github("kurtis-s/anlpsb")
@@ -13,8 +13,6 @@ install_github("kurtis-s/anlpsb")
 The code below shows how to run the model on the simulated count dataset included in the package:
 ```r
 rm(list=ls())
-
-set.seed(389228)
 
 library(anlpsb)
 
@@ -33,7 +31,7 @@ alpha0.hat.vec <-  log(colMeans(apply(Y.mat, 2, function(col) col/r.hat.vec)))
 # Settings ----------------------------------------------------------------
 SETTINGS <- list()
 ### MCMC
-SETTINGS$n.mcmc <- 10
+SETTINGS$n.mcmc <- 25000 
 SETTINGS$print.mcmc <- SETTINGS$n.mcmc/100
 SETTINGS$n.thin <- 2
 ### Kernal
