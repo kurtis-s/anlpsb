@@ -105,19 +105,6 @@ fnGetMuMat <- function(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat) {
     return(Mu.mat)
 }
 
-# fnSampIota <- function(iota.scal, smallest.abs.beta.jp) {
-#     iota.prop <- runif(1, min=0, max=smallest.abs.beta.jp)
-#     curr.log.lik <- dgamma(iota.scal, PRIOR$a.iota, PRIOR$b.iota, log=TRUE)
-#     prop.log.lik <- dgamma(iota.prop, PRIOR$a.iota, PRIOR$b.iota, log=TRUE)
-#
-#     if(acceptProposal(curr.log.lik, prop.log.lik)) {
-#         return(iota.prop)
-#     }
-#     else {
-#         return(iota.scal)
-#     }
-# }
-
 fnBetaGammaIotaConsistent <- function(Beta.mat, Gamma.mat, iota.vec, sigma.2.vec) {
     #' This function is only for testing purposes.  Checks if iota.vec is consistent
     #' with Beta.mat
