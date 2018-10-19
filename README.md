@@ -34,7 +34,7 @@ SETTINGS <- list()
 SETTINGS$n.mcmc <- 25000 
 SETTINGS$print.mcmc <- SETTINGS$n.mcmc/100
 SETTINGS$n.thin <- 2
-### Kernal
+### Kernel
 M.knots <- 70 # Number of knot points
 SETTINGS$u.m.basis <- seq(min(ALL_dat$Z$days)-0.5, max(ALL_dat$Z$days)+0.5, length.out=M.knots)
 SETTINGS$phi <- (2*ALL_dat$n/M.knots)
@@ -102,7 +102,7 @@ time <- ALL_dat$Z$days
 # Missing values setup ----------------------------------------------------
 missing.vars <- colnames(ALL_dat$Miss_ind[, -c(1, 2)])[colSums(ALL_dat$Miss_ind[, -c(1, 2)]) > 0] # First two columns are the index and the day
 
-n.missing.vars <- length(missing.vars) # Number of missing variables, NOT using dummy encoding e.g. "bloom" is only 1 variable, not 4
+n.missing.vars <- length(missing.vars) # Number of missing variables, NOT using dummy encoding
 max.miss.cat.vec <- sapply(missing.vars, function(missing.var) { # Number of categories for each of the missing variables{
     sum(startsWith(colnames(Z.mat), missing.var))
 })
@@ -117,5 +117,8 @@ Miss.var.ind.mat <- ALL_dat$Miss_ind[, missing.vars, drop=FALSE] # Remove 'Index
 
 # Cleanup -----------------------------------------------------------------
 rm(list=ls()[!(ls() %in% c("PRIOR", "SETTINGS", "ALL_dat", "Z.mat", "Y.mat", "time", "Miss.var.ind.mat", "max.miss.cat.vec", "first.p.missing.idx1.vec"))])
+
+
+# Run ---------------------------------------------------------------------
 mod <- anlpsbm(Y.mat, Z.mat, time, ALL_dat$rep_K, Miss.var.ind.mat, max.miss.cat.vec, first.p.missing.idx1.vec, PRIOR=PRIOR, SETTINGS=SETTINGS)
 ```
