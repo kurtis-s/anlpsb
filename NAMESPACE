@@ -3,4 +3,5 @@
 export(anlpsbm)
 export(rtigamma)
 importFrom(Rcpp,sourceCpp)
+importFrom(RcppTN,rtn)
 useDynLib(anlpsb)

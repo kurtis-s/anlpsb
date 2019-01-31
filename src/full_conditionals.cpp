@@ -662,7 +662,7 @@ void fnSampThetaMat(NumericMatrix Theta_mat, NumericVector tau_2_vec,
 
 // ### sigma_p_2
 // [[Rcpp::export]]
-void fnSampSigma2Vec(NumericVector sigma_2_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector iota_vec, const double & a_sigma, const double & b_sigma) {
+void fnSampSigma2Vec(NumericVector sigma_2_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector iota_vec, Function rtigamma, const double & a_sigma, const double & b_sigma) {
     const double & P = sigma_2_vec.size();
     const double & J = Gamma_mat.nrow();
 
@@ -695,8 +695,8 @@ void fnSampSigma2Vec(NumericVector sigma_2_vec, NumericMatrix Beta_mat, NumericM
             }
         }
 
-        Environment anlpsb("package:anlpsb");
-        Function rtigamma = anlpsb["rtigamma"];
+        // Environment anlpsb("package:anlpsb");
+        // Function rtigamma = anlpsb["rtigamma"];
         // Function rtigamma("rtigamma");
         NumericVector draw = rtigamma(1, alpha_param_part, beta_param_part, sigma_p_2_ubound);
         sigma_2_vec(p) = draw(0);

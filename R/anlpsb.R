@@ -1,5 +1,6 @@
 #' @useDynLib anlpsb
 #' @importFrom Rcpp sourceCpp
+#' @importFrom RcppTN rtn
 NULL
 
 #' Bayesian sparse multivariate regression model with variable selection using asymetric nonlocal priors (NLPs)
@@ -110,7 +111,7 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
     r.tilde.hat.vec <- log(r.hat.vec)
     alpha0.hat.vec <-  log(colMeans(apply(Y.mat, 2, function(col) col/r.hat.vec)))
 
-    time.idx <- rep(1:ALL_dat$n, times=ALL_dat$rep_K) # Time index for each of the N=158 obs
+    time.idx <- rep(1:n.dim, times=rep.K) # Time index for each of the N=158 obs
     Y.frame <- data.frame(cbind(factor(time.idx), Y.mat))
     colnames(Y.frame) <- c("TimeIdx", colnames(Y.mat))
     Mu.tjk.hat.frame <- data.frame(cbind(time.idx, apply(Y.mat, 2, function(otu.col) otu.col/r.hat.vec)))
@@ -151,7 +152,7 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
     psi.alpha0.vec <- fnSampPsi(d.alpha0.vec, PRIOR$a.psi.alpha0)
     ## theta.mj
     Theta.mat <- Theta.hat.mat
-    tau.2.vec <- fnSampTau2(Theta.mat, PRIOR, SETTINGS)
+    tau.2.vec <- fnSampTau2(Theta.mat, PRIOR, SETTINGS, J.dim)
     ## beta.jp
     Beta.mat <- Beta.hat.mat
     Gamma.mat <- Gamma.hat.mat
@@ -159,8 +160,8 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
     xi.pi1 <- PRIOR$xi.pi1
     kappa.pi0 <- PRIOR$kappa.pi0
     kappa.pi1 <- PRIOR$kappa.pi1
-    pi0.vec <- fnSampPi0Vec(kappa.pi0, xi.pi0, Gamma.mat)
-    pi1.vec <- fnSampPi1Vec(kappa.pi1, xi.pi1, Gamma.mat)
+    pi0.vec <- fnSampPi0Vec(kappa.pi0, xi.pi0, Gamma.mat, J.dim, P.dim)
+    pi1.vec <- fnSampPi1Vec(kappa.pi1, xi.pi1, Gamma.mat, P.dim)
     sigma.2.vec <- sigma.2.hat.vec
     tmp.for.iota <- abs(Beta.mat)
     tmp.for.iota[tmp.for.iota==0] <- NA
@@ -172,7 +173,7 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
     s.tilde.vec <- rnorm(J.dim, h.scal, sqrt(var.sig.2))
     s.vec <- exp(s.tilde.vec)
     ## Mu.mat
-    Mu.mat <- fnGetMuMat(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat)
+    Mu.mat <- fnGetMuMat(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat, n.dim, J.dim)
     ## Cleanup
     rm(Mu.hat.mat)
     rm(r.hat.vec)
@@ -230,8 +231,8 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
 
             ## s.j
             fnSampSVec(s.vec, s.tilde.vec, r.vec, Mu.mat, rep.K, Y.mat, h.scal, var.sig.2, SETTINGS$s.j.tilde.proposal.sd)
-            h.scal <- fnSampH(s.tilde.vec, var.sig.2, PRIOR)
-            var.sig.2 <- fnSampVarSig2(s.tilde.vec, h.scal, PRIOR)
+            h.scal <- fnSampH(s.tilde.vec, var.sig.2, PRIOR, J.dim)
+            var.sig.2 <- fnSampVarSig2(s.tilde.vec, h.scal, PRIOR, J.dim)
             ## r.tk
             psi.r.vec <- fnSampPsi(d.r.vec, PRIOR$a.psi.r)
             fnSampWVec(w.r.vec, r.tilde.vec, lambda.r.vec,
@@ -265,7 +266,7 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
 
             ## theta.mj
             fnSampThetaMat(Theta.mat, tau.2.vec, s.vec, r.vec, Mu.mat, rep.K, K.mat, Y.mat, SETTINGS$theta.mj.proposal.sd)
-            tau.2.vec <- fnSampTau2(Theta.mat, PRIOR, SETTINGS)
+            tau.2.vec <- fnSampTau2(Theta.mat, PRIOR, SETTINGS, J.dim)
 
             ## beta.jp
             fnSampBetaMat(Beta.mat, Gamma.mat, Mu.mat, s.vec, r.vec, X.mat, sigma.2.vec, rep.K, Y.mat, iota.vec, SETTINGS$beta.jp.proposal.sd)
@@ -276,10 +277,10 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
             fnSampIotaVec(iota.vec, Beta.mat, Gamma.mat, sigma.2.vec, PRIOR$a.iota, PRIOR$b.iota, SETTINGS$iota.p.proposal.sd)
 
             ## pi0/pi1
-            pi0.vec <- fnSampPi0Vec(kappa.pi0, xi.pi0, Gamma.mat)
-            pi1.vec <- fnSampPi1Vec(kappa.pi1, xi.pi1, Gamma.mat)
+            pi0.vec <- fnSampPi0Vec(kappa.pi0, xi.pi0, Gamma.mat, J.dim, P.dim)
+            pi1.vec <- fnSampPi1Vec(kappa.pi1, xi.pi1, Gamma.mat, P.dim)
             ## sigma.p.2
-            fnSampSigma2Vec(sigma.2.vec, Beta.mat, Gamma.mat, iota.vec, PRIOR$a.sigma, PRIOR$b.sigma)
+            fnSampSigma2Vec(sigma.2.vec, Beta.mat, Gamma.mat, iota.vec, rtigamma, PRIOR$a.sigma, PRIOR$b.sigma)
 
             ## beta.jp, sigma.p.2, and iota.p joint update
             fnSampIotaVecSigma2VecJoint(sigma.2.vec, iota.vec, Beta.mat, Gamma.mat, Mu.mat, X.mat, s.vec, r.vec, rep.K, pi0.vec, pi1.vec, PRIOR$a.sigma, PRIOR$b.sigma, PRIOR$a.iota, PRIOR$b.iota, Y.mat, SETTINGS$iota.p.joint.proposal.sd, SETTINGS$sigma.p.2.joint.proposal.sd)
