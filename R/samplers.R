@@ -1,14 +1,14 @@
-fnSampH <- function(s.tilde.vec, var.sig.2, PRIOR) {
+fnSampH <- function(s.tilde.vec, var.sig.2, PRIOR, J.dim) {
     s.bar <- mean(s.tilde.vec)
-    precision <- 1/PRIOR$b.h.2 + ALL_dat$J/var.sig.2
-    draw.mean <- ( (1/PRIOR$b.h.2)*PRIOR$a.h + (ALL_dat$J/var.sig.2)*s.bar )/precision
+    precision <- 1/PRIOR$b.h.2 + J.dim/var.sig.2
+    draw.mean <- ( (1/PRIOR$b.h.2)*PRIOR$a.h + (J.dim/var.sig.2)*s.bar )/precision
     draw.var <- precision^(-1)
 
     return(rnorm(1, draw.mean, sqrt(draw.var)))
 }
 
-fnSampVarSig2 <- function(s.tilde.vec, h.scal, PRIOR) {
-    alpha.param <- PRIOR$a.var.sig + ALL_dat$J/2
+fnSampVarSig2 <- function(s.tilde.vec, h.scal, PRIOR, J.dim) {
+    alpha.param <- PRIOR$a.var.sig + J.dim/2
     beta.param <- PRIOR$b.var.sig + (1/2)*sum( (s.tilde.vec - h.scal)^2)
 
     return(1/rgamma(1, alpha.param, beta.param))
@@ -20,26 +20,26 @@ fnSampPsi <- function(d.vec, a.psi) {
     return(c(rdirichlet(1, dirichlet.param)))
 }
 
-fnSampTau2 <- function(Theta.mat, PRIOR, SETTINGS) {
+fnSampTau2 <- function(Theta.mat, PRIOR, SETTINGS, J.dim) {
     alpha.params <- PRIOR$a.tau + SETTINGS$M/2 # Only length 1, but is recycled in the IG draw
     beta.params <- PRIOR$b.tau + (1/2)*colSums(Theta.mat^2) # Length J
 
-    1/rgamma(ALL_dat$J, alpha.params, beta.params)
+    1/rgamma(J.dim, alpha.params, beta.params)
 }
 
-fnSampPi0Vec <- function(kappa.pi0, xi.pi0, Gamma.mat) {
+fnSampPi0Vec <- function(kappa.pi0, xi.pi0, Gamma.mat, J.dim, P.dim) {
     gamma.zero.sums <- colSums(Gamma.mat == 0)
-    alpha.params <- kappa.pi0 * xi.pi0 + (ALL_dat$J - gamma.zero.sums) # Length P, '(ALL_dat$J - gamma.zero.sums)' is the sum of gamma_jp over J where gamma_jp != 0
+    alpha.params <- kappa.pi0 * xi.pi0 + (J.dim - gamma.zero.sums) # Length P, '(J - gamma.zero.sums)' is the sum of gamma_jp over J where gamma_jp != 0
     beta.params <- kappa.pi0 * (1-xi.pi0) + gamma.zero.sums # Length P
 
-    rbeta(ALL_dat$P, alpha.params, beta.params)
+    rbeta(P.dim, alpha.params, beta.params)
 }
 
-fnSampPi1Vec <- function(kappa.pi1, xi.pi1, Gamma.mat) {
+fnSampPi1Vec <- function(kappa.pi1, xi.pi1, Gamma.mat, P.dim) {
     alpha.params <- kappa.pi1 * xi.pi1 + colSums(Gamma.mat == 1)
     beta.params <- kappa.pi1 * (1- xi.pi1) + colSums(Gamma.mat == -1)
 
-    rbeta(ALL_dat$P, alpha.params, beta.params)
+    rbeta(P.dim, alpha.params, beta.params)
 }
 
 fnXiLogLik <- function(xi.pi, kappa.pi, pi.vec, a.xi, b.xi) {
@@ -94,10 +94,10 @@ fnSampKappa <- function(kappa.pi, xi.pi, pi.vec, a.kappa, b.kappa, kappa.pi.prop
     }
 }
 
-fnGetMuMat <- function(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat) {
-    Mu.mat <- matrix(0, nrow=ALL_dat$n, ncol=ALL_dat$J)
-    for(i in 1:ALL_dat$n) {
-        for(j in 1:ALL_dat$J) {
+fnGetMuMat <- function(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat, n.dim, J.dim) {
+    Mu.mat <- matrix(0, nrow=n.dim, ncol=J.dim)
+    for(i in 1:n.dim) {
+        for(j in 1:J.dim) {
             Mu.mat[i, j] <- exp(alpha0.vec[j] + t(K.mat[i,]) %*% Theta.mat[, j] + t(X.mat[i, ]) %*% Beta.mat[j, ])
         }
     }
@@ -105,21 +105,21 @@ fnGetMuMat <- function(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat) {
     return(Mu.mat)
 }
 
-fnBetaGammaIotaConsistent <- function(Beta.mat, Gamma.mat, iota.vec, sigma.2.vec) {
-    #' This function is only for testing purposes.  Checks if iota.vec is consistent
-    #' with Beta.mat
-    for(p.iter in 1:ALL_dat$P) {
-        if(!all(abs(Beta.mat[, p.iter][Beta.mat[, p.iter]!=0]) > iota.vec[p.iter]*sqrt(sigma.2.vec[p.iter]))) {
-            return(FALSE)
-        }
-    }
-
-    if(!all( (Beta.mat ==0) == (Gamma.mat == 0)) ) return(FALSE);
-    if(!all( (Beta.mat > 0) == (Gamma.mat == 1)) ) return(FALSE);
-    if(!all( (Beta.mat < 0) == (Gamma.mat ==-1)) ) return(FALSE);
-
-    return(TRUE)
-}
+#' fnBetaGammaIotaConsistent <- function(Beta.mat, Gamma.mat, iota.vec, sigma.2.vec, P.dim) {
+#'     #' This function is only for testing purposes.  Checks if iota.vec is consistent
+#'     #' with Beta.mat
+#'     for(p.iter in 1:P.dim) {
+#'         if(!all(abs(Beta.mat[, p.iter][Beta.mat[, p.iter]!=0]) > iota.vec[p.iter]*sqrt(sigma.2.vec[p.iter]))) {
+#'             return(FALSE)
+#'         }
+#'     }
+#'
+#'     if(!all( (Beta.mat ==0) == (Gamma.mat == 0)) ) return(FALSE);
+#'     if(!all( (Beta.mat > 0) == (Gamma.mat == 1)) ) return(FALSE);
+#'     if(!all( (Beta.mat < 0) == (Gamma.mat ==-1)) ) return(FALSE);
+#'
+#'     return(TRUE)
+#' }
 
 # Random generators -------------------------------------------------------
 rdirichlet <- function (n, alpha) # Taken from MCMCpack
