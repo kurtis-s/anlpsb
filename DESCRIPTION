@@ -1,7 +1,7 @@
 Package: anlpsb
 Type: Package
 Title: ANLP-SB Model for Count Data
-Version: 0.1.0
+Version: 0.2.0
 Author: Kurtis Shuler 
 Maintainer: Kurtis Shuler <kshuler@ucsc.edu>
 Description: Implementation of the ANLP-SB model described in the companion text
