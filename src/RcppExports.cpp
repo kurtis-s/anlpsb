@@ -439,17 +439,18 @@ BEGIN_RCPP
 END_RCPP
 }
 // fnSampSigma2Vec
-void fnSampSigma2Vec(NumericVector sigma_2_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector iota_vec, const double& a_sigma, const double& b_sigma);
-RcppExport SEXP _anlpsb_fnSampSigma2Vec(SEXP sigma_2_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP iota_vecSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP) {
+void fnSampSigma2Vec(NumericVector sigma_2_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector iota_vec, Function rtigamma, const double& a_sigma, const double& b_sigma);
+RcppExport SEXP _anlpsb_fnSampSigma2Vec(SEXP sigma_2_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP iota_vecSEXP, SEXP rtigammaSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type sigma_2_vec(sigma_2_vecSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type Gamma_mat(Gamma_matSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type iota_vec(iota_vecSEXP);
+    Rcpp::traits::input_parameter< Function >::type rtigamma(rtigammaSEXP);
     Rcpp::traits::input_parameter< const double& >::type a_sigma(a_sigmaSEXP);
     Rcpp::traits::input_parameter< const double& >::type b_sigma(b_sigmaSEXP);
-    fnSampSigma2Vec(sigma_2_vec, Beta_mat, Gamma_mat, iota_vec, a_sigma, b_sigma);
+    fnSampSigma2Vec(sigma_2_vec, Beta_mat, Gamma_mat, iota_vec, rtigamma, a_sigma, b_sigma);
     return R_NilValue;
 END_RCPP
 }
@@ -848,7 +849,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_anlpsb_fnSampAlpha0VecJointVertical", (DL_FUNC) &_anlpsb_fnSampAlpha0VecJointVertical, 13},
     {"_anlpsb_fnThetamjLogLik", (DL_FUNC) &_anlpsb_fnThetamjLogLik, 7},
     {"_anlpsb_fnSampThetaMat", (DL_FUNC) &_anlpsb_fnSampThetaMat, 9},
-    {"_anlpsb_fnSampSigma2Vec", (DL_FUNC) &_anlpsb_fnSampSigma2Vec, 6},
+    {"_anlpsb_fnSampSigma2Vec", (DL_FUNC) &_anlpsb_fnSampSigma2Vec, 7},
     {"_anlpsb_fnMujVecFromBetajp", (DL_FUNC) &_anlpsb_fnMujVecFromBetajp, 4},
     {"_anlpsb_fnBetajpPriorLik", (DL_FUNC) &_anlpsb_fnBetajpPriorLik, 3},
     {"_anlpsb_fnBetajpLogLik", (DL_FUNC) &_anlpsb_fnBetajpLogLik, 8},

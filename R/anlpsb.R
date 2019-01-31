@@ -1,5 +1,6 @@
 #' @useDynLib anlpsb
 #' @importFrom Rcpp sourceCpp
+#' @importFrom RcppTN rtn
 NULL
 
 #' Bayesian sparse multivariate regression model with variable selection using asymetric nonlocal priors (NLPs)
@@ -279,7 +280,7 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
             pi0.vec <- fnSampPi0Vec(kappa.pi0, xi.pi0, Gamma.mat, J.dim, P.dim)
             pi1.vec <- fnSampPi1Vec(kappa.pi1, xi.pi1, Gamma.mat, P.dim)
             ## sigma.p.2
-            fnSampSigma2Vec(sigma.2.vec, Beta.mat, Gamma.mat, iota.vec, PRIOR$a.sigma, PRIOR$b.sigma)
+            fnSampSigma2Vec(sigma.2.vec, Beta.mat, Gamma.mat, iota.vec, rtigamma, PRIOR$a.sigma, PRIOR$b.sigma)
 
             ## beta.jp, sigma.p.2, and iota.p joint update
             fnSampIotaVecSigma2VecJoint(sigma.2.vec, iota.vec, Beta.mat, Gamma.mat, Mu.mat, X.mat, s.vec, r.vec, rep.K, pi0.vec, pi1.vec, PRIOR$a.sigma, PRIOR$b.sigma, PRIOR$a.iota, PRIOR$b.iota, Y.mat, SETTINGS$iota.p.joint.proposal.sd, SETTINGS$sigma.p.2.joint.proposal.sd)

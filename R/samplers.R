@@ -105,22 +105,6 @@ fnGetMuMat <- function(alpha0.vec, Theta.mat, Beta.mat, K.mat, X.mat, n.dim, J.d
     return(Mu.mat)
 }
 
-#' fnBetaGammaIotaConsistent <- function(Beta.mat, Gamma.mat, iota.vec, sigma.2.vec, P.dim) {
-#'     #' This function is only for testing purposes.  Checks if iota.vec is consistent
-#'     #' with Beta.mat
-#'     for(p.iter in 1:P.dim) {
-#'         if(!all(abs(Beta.mat[, p.iter][Beta.mat[, p.iter]!=0]) > iota.vec[p.iter]*sqrt(sigma.2.vec[p.iter]))) {
-#'             return(FALSE)
-#'         }
-#'     }
-#'
-#'     if(!all( (Beta.mat ==0) == (Gamma.mat == 0)) ) return(FALSE);
-#'     if(!all( (Beta.mat > 0) == (Gamma.mat == 1)) ) return(FALSE);
-#'     if(!all( (Beta.mat < 0) == (Gamma.mat ==-1)) ) return(FALSE);
-#'
-#'     return(TRUE)
-#' }
-
 # Random generators -------------------------------------------------------
 rdirichlet <- function (n, alpha) # Taken from MCMCpack
 {

@@ -97,8 +97,8 @@ fnSampThetaMat <- function(Theta_mat, tau_2_vec, s_vec, r_vec, Mu_mat, rep_K, K_
     invisible(.Call('_anlpsb_fnSampThetaMat', PACKAGE = 'anlpsb', Theta_mat, tau_2_vec, s_vec, r_vec, Mu_mat, rep_K, K_mat, Y_mat, theta_mj_proposal_sd))
 }
 
-fnSampSigma2Vec <- function(sigma_2_vec, Beta_mat, Gamma_mat, iota_vec, a_sigma, b_sigma) {
-    invisible(.Call('_anlpsb_fnSampSigma2Vec', PACKAGE = 'anlpsb', sigma_2_vec, Beta_mat, Gamma_mat, iota_vec, a_sigma, b_sigma))
+fnSampSigma2Vec <- function(sigma_2_vec, Beta_mat, Gamma_mat, iota_vec, rtigamma, a_sigma, b_sigma) {
+    invisible(.Call('_anlpsb_fnSampSigma2Vec', PACKAGE = 'anlpsb', sigma_2_vec, Beta_mat, Gamma_mat, iota_vec, rtigamma, a_sigma, b_sigma))
 }
 
 fnMujVecFromBetajp <- function(beta_jp, beta_jp_curr, mu_j_vec_curr, z_p_vec) {
