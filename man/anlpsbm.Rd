@@ -6,7 +6,7 @@
 \usage{
 anlpsbm(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat = NULL,
   max.miss.cat.vec = NULL, first.p.missing.idx1.vec = NULL, PRIOR,
-  SETTINGS)
+  SETTINGS, fftempdir)
 }
 \arguments{
 \item{Y.mat}{\eqn{N x J} matrix of counts}

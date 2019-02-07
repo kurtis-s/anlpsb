@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // fnLogLikNoGamma
 double fnLogLikNoGamma(const double& y_tkj, const double& s_j, const double& r_tk, const double& mu_tj);
-RcppExport SEXP _anlpsb_fnLogLikNoGamma(SEXP y_tkjSEXP, SEXP s_jSEXP, SEXP r_tkSEXP, SEXP mu_tjSEXP) {
+RcppExport SEXP _anlpsbff_fnLogLikNoGamma(SEXP y_tkjSEXP, SEXP s_jSEXP, SEXP r_tkSEXP, SEXP mu_tjSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,7 +21,7 @@ END_RCPP
 }
 // fnLogLikNoFac
 double fnLogLikNoFac(const double& y_tkj, const double& s_j, const double& r_tk, const double& mu_tj);
-RcppExport SEXP _anlpsb_fnLogLikNoFac(SEXP y_tkjSEXP, SEXP s_jSEXP, SEXP r_tkSEXP, SEXP mu_tjSEXP) {
+RcppExport SEXP _anlpsbff_fnLogLikNoFac(SEXP y_tkjSEXP, SEXP s_jSEXP, SEXP r_tkSEXP, SEXP mu_tjSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -35,7 +35,7 @@ END_RCPP
 }
 // fnOtuLogLikNoGamma
 double fnOtuLogLikNoGamma(const double& s_j, NumericVector r_vec, NumericVector mu_j_vec, NumericVector rep_K, NumericVector y_j_vec);
-RcppExport SEXP _anlpsb_fnOtuLogLikNoGamma(SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnOtuLogLikNoGamma(SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -50,7 +50,7 @@ END_RCPP
 }
 // fnOtuLogLikNoFac
 double fnOtuLogLikNoFac(const double& s_j, NumericVector r_vec, NumericVector mu_j_vec, NumericVector rep_K, NumericVector y_j_vec);
-RcppExport SEXP _anlpsb_fnOtuLogLikNoFac(SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnOtuLogLikNoFac(SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -65,7 +65,7 @@ END_RCPP
 }
 // fnTimepointLogLikNoGamma
 double fnTimepointLogLikNoGamma(NumericVector mu_t_vec, NumericVector s_vec, const double& r_tk, NumericVector y_tk_vec);
-RcppExport SEXP _anlpsb_fnTimepointLogLikNoGamma(SEXP mu_t_vecSEXP, SEXP s_vecSEXP, SEXP r_tkSEXP, SEXP y_tk_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnTimepointLogLikNoGamma(SEXP mu_t_vecSEXP, SEXP s_vecSEXP, SEXP r_tkSEXP, SEXP y_tk_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -79,7 +79,7 @@ END_RCPP
 }
 // acceptProposal
 bool acceptProposal(const double& curr_log_lik, const double& prop_log_lik, const double log_curr_to_prop_prob, const double log_prop_to_curr_prob);
-RcppExport SEXP _anlpsb_acceptProposal(SEXP curr_log_likSEXP, SEXP prop_log_likSEXP, SEXP log_curr_to_prop_probSEXP, SEXP log_prop_to_curr_probSEXP) {
+RcppExport SEXP _anlpsbff_acceptProposal(SEXP curr_log_likSEXP, SEXP prop_log_likSEXP, SEXP log_curr_to_prop_probSEXP, SEXP log_prop_to_curr_probSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -93,7 +93,7 @@ END_RCPP
 }
 // fnSjTildeLogLik
 double fnSjTildeLogLik(const double& s_j, NumericVector r_vec, NumericVector mu_j_vec, NumericVector rep_K, NumericVector y_j_vec, const double& h_scal, const double& var_sig_2);
-RcppExport SEXP _anlpsb_fnSjTildeLogLik(SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP, SEXP h_scalSEXP, SEXP var_sig_2SEXP) {
+RcppExport SEXP _anlpsbff_fnSjTildeLogLik(SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP, SEXP h_scalSEXP, SEXP var_sig_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -110,7 +110,7 @@ END_RCPP
 }
 // fnSampSVec
 void fnSampSVec(NumericVector s_vec, NumericVector s_tilde_vec, NumericVector r_vec, NumericMatrix Mu_mat, NumericVector rep_K, NumericMatrix Y_mat, const double& h_scal, const double& var_sig_2, const double& s_j_tilde_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampSVec(SEXP s_vecSEXP, SEXP s_tilde_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP h_scalSEXP, SEXP var_sig_2SEXP, SEXP s_j_tilde_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampSVec(SEXP s_vecSEXP, SEXP s_tilde_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP h_scalSEXP, SEXP var_sig_2SEXP, SEXP s_j_tilde_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type s_vec(s_vecSEXP);
@@ -128,7 +128,7 @@ END_RCPP
 }
 // fnWlLogLik
 double fnWlLogLik(const int& ell_idx1, const double& w_ell, NumericVector param_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, const double& upsilon, const double& a_w, const double& b_w, const double& u_2);
-RcppExport SEXP _anlpsb_fnWlLogLik(SEXP ell_idx1SEXP, SEXP w_ellSEXP, SEXP param_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP a_wSEXP, SEXP b_wSEXP, SEXP u_2SEXP) {
+RcppExport SEXP _anlpsbff_fnWlLogLik(SEXP ell_idx1SEXP, SEXP w_ellSEXP, SEXP param_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP a_wSEXP, SEXP b_wSEXP, SEXP u_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -148,7 +148,7 @@ END_RCPP
 }
 // fnSampWVec
 void fnSampWVec(NumericVector w_vec, NumericVector param_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, const double& upsilon, const double& a_w, const double& b_w, const double& u_2, const double& w_ell_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampWVec(SEXP w_vecSEXP, SEXP param_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP a_wSEXP, SEXP b_wSEXP, SEXP u_2SEXP, SEXP w_ell_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampWVec(SEXP w_vecSEXP, SEXP param_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP a_wSEXP, SEXP b_wSEXP, SEXP u_2SEXP, SEXP w_ell_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type w_vec(w_vecSEXP);
@@ -167,7 +167,7 @@ END_RCPP
 }
 // fnSampEtaVec
 void fnSampEtaVec(NumericVector eta_vec, NumericVector param_vec, NumericVector w_vec, NumericVector lambda_vec, NumericVector c_vec, const double& u_2, const double& upsilon, const double& b_eta_2);
-RcppExport SEXP _anlpsb_fnSampEtaVec(SEXP eta_vecSEXP, SEXP param_vecSEXP, SEXP w_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP u_2SEXP, SEXP upsilonSEXP, SEXP b_eta_2SEXP) {
+RcppExport SEXP _anlpsbff_fnSampEtaVec(SEXP eta_vecSEXP, SEXP param_vecSEXP, SEXP w_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP u_2SEXP, SEXP upsilonSEXP, SEXP b_eta_2SEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type eta_vec(eta_vecSEXP);
@@ -184,7 +184,7 @@ END_RCPP
 }
 // fnSampC
 int fnSampC(const double& param, NumericVector psi_vec, NumericVector w_vec, NumericVector eta_vec, const double& upsilon, const double& u_2);
-RcppExport SEXP _anlpsb_fnSampC(SEXP paramSEXP, SEXP psi_vecSEXP, SEXP w_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP u_2SEXP) {
+RcppExport SEXP _anlpsbff_fnSampC(SEXP paramSEXP, SEXP psi_vecSEXP, SEXP w_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP u_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -200,7 +200,7 @@ END_RCPP
 }
 // fnSampCVec
 void fnSampCVec(IntegerVector c_vec, IntegerVector d_vec, NumericVector param_vec, NumericVector psi_vec, NumericVector w_vec, NumericVector eta_vec, const double& upsilon, const double& u_2);
-RcppExport SEXP _anlpsb_fnSampCVec(SEXP c_vecSEXP, SEXP d_vecSEXP, SEXP param_vecSEXP, SEXP psi_vecSEXP, SEXP w_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP u_2SEXP) {
+RcppExport SEXP _anlpsbff_fnSampCVec(SEXP c_vecSEXP, SEXP d_vecSEXP, SEXP param_vecSEXP, SEXP psi_vecSEXP, SEXP w_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP u_2SEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< IntegerVector >::type c_vec(c_vecSEXP);
@@ -217,7 +217,7 @@ END_RCPP
 }
 // fnSampLambdaVec
 void fnSampLambdaVec(IntegerVector lambda_vec, NumericVector param_vec, IntegerVector c_vec, NumericVector w_vec, NumericVector eta_vec, const double& upsilon, const double& u_2);
-RcppExport SEXP _anlpsb_fnSampLambdaVec(SEXP lambda_vecSEXP, SEXP param_vecSEXP, SEXP c_vecSEXP, SEXP w_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP u_2SEXP) {
+RcppExport SEXP _anlpsbff_fnSampLambdaVec(SEXP lambda_vecSEXP, SEXP param_vecSEXP, SEXP c_vecSEXP, SEXP w_vecSEXP, SEXP eta_vecSEXP, SEXP upsilonSEXP, SEXP u_2SEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< IntegerVector >::type lambda_vec(lambda_vecSEXP);
@@ -233,7 +233,7 @@ END_RCPP
 }
 // fnRtkTildeLogLik
 double fnRtkTildeLogLik(const double& r_tk, NumericVector mu_t_vec, NumericVector s_vec, const int& lambda_tk, const double& eta_ell, const double& w_ell, const double& upsilon_r, const double& u_2, NumericVector y_tk_vec);
-RcppExport SEXP _anlpsb_fnRtkTildeLogLik(SEXP r_tkSEXP, SEXP mu_t_vecSEXP, SEXP s_vecSEXP, SEXP lambda_tkSEXP, SEXP eta_ellSEXP, SEXP w_ellSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP y_tk_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnRtkTildeLogLik(SEXP r_tkSEXP, SEXP mu_t_vecSEXP, SEXP s_vecSEXP, SEXP lambda_tkSEXP, SEXP eta_ellSEXP, SEXP w_ellSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP y_tk_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -252,7 +252,7 @@ END_RCPP
 }
 // fnSampRVec
 void fnSampRVec(NumericVector r_vec, NumericVector r_tilde_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, NumericVector w_vec, NumericVector rep_K, const double& upsilon_r, const double& u_2, NumericMatrix Y_mat, const double& r_tk_tilde_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampRVec(SEXP r_vecSEXP, SEXP r_tilde_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP rep_KSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP Y_matSEXP, SEXP r_tk_tilde_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampRVec(SEXP r_vecSEXP, SEXP r_tilde_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP rep_KSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP Y_matSEXP, SEXP r_tk_tilde_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type r_vec(r_vecSEXP);
@@ -274,7 +274,7 @@ END_RCPP
 }
 // fnSampRVecJoint
 void fnSampRVecJoint(NumericVector r_vec, NumericVector r_tilde_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, NumericVector w_vec, NumericVector rep_K, const double& upsilon_r, const double& u_2, NumericMatrix Y_mat, const double& r_tk_tilde_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampRVecJoint(SEXP r_vecSEXP, SEXP r_tilde_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP rep_KSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP Y_matSEXP, SEXP r_tk_tilde_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampRVecJoint(SEXP r_vecSEXP, SEXP r_tilde_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP rep_KSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP Y_matSEXP, SEXP r_tk_tilde_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type r_vec(r_vecSEXP);
@@ -296,7 +296,7 @@ END_RCPP
 }
 // fnSampRVecJointVertical
 void fnSampRVecJointVertical(NumericVector r_vec, NumericVector r_tilde_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, NumericVector w_vec, NumericVector rep_K, const double& upsilon_r, const double& u_2, NumericMatrix Y_mat, const double& r_tk_tilde_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampRVecJointVertical(SEXP r_vecSEXP, SEXP r_tilde_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP rep_KSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP Y_matSEXP, SEXP r_tk_tilde_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampRVecJointVertical(SEXP r_vecSEXP, SEXP r_tilde_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP rep_KSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP Y_matSEXP, SEXP r_tk_tilde_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type r_vec(r_vecSEXP);
@@ -318,7 +318,7 @@ END_RCPP
 }
 // fnAlpha0jLogLik
 double fnAlpha0jLogLik(const double& alpha0_j, NumericVector r_vec, NumericVector mu_j_vec, const double& s_j, const int& lambda_j, const double& eta_ell, const double& w_ell, const double& upsilon_r, const double& u_2, NumericVector rep_K, NumericVector y_j_vec);
-RcppExport SEXP _anlpsb_fnAlpha0jLogLik(SEXP alpha0_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP s_jSEXP, SEXP lambda_jSEXP, SEXP eta_ellSEXP, SEXP w_ellSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnAlpha0jLogLik(SEXP alpha0_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP s_jSEXP, SEXP lambda_jSEXP, SEXP eta_ellSEXP, SEXP w_ellSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -339,7 +339,7 @@ END_RCPP
 }
 // fnSampAlpha0Vec
 void fnSampAlpha0Vec(NumericVector alpha0_vec, NumericVector r_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, NumericVector w_vec, const double& upsilon_r, const double& u_2, NumericVector rep_K, NumericMatrix Y_mat, const double& alpha0_j_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampAlpha0Vec(SEXP alpha0_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP alpha0_j_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampAlpha0Vec(SEXP alpha0_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP alpha0_j_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type alpha0_vec(alpha0_vecSEXP);
@@ -361,7 +361,7 @@ END_RCPP
 }
 // fnSampAlpha0VecJoint
 void fnSampAlpha0VecJoint(NumericVector alpha0_vec, NumericVector r_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, NumericVector w_vec, const double& upsilon_r, const double& u_2, NumericVector rep_K, NumericMatrix Y_mat, const double& alpha0_j_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampAlpha0VecJoint(SEXP alpha0_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP alpha0_j_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampAlpha0VecJoint(SEXP alpha0_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP alpha0_j_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type alpha0_vec(alpha0_vecSEXP);
@@ -383,7 +383,7 @@ END_RCPP
 }
 // fnSampAlpha0VecJointVertical
 void fnSampAlpha0VecJointVertical(NumericVector alpha0_vec, NumericVector r_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector lambda_vec, NumericVector c_vec, NumericVector eta_vec, NumericVector w_vec, const double& upsilon_r, const double& u_2, NumericVector rep_K, NumericMatrix Y_mat, const double& alpha0_j_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampAlpha0VecJointVertical(SEXP alpha0_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP alpha0_j_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampAlpha0VecJointVertical(SEXP alpha0_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP lambda_vecSEXP, SEXP c_vecSEXP, SEXP eta_vecSEXP, SEXP w_vecSEXP, SEXP upsilon_rSEXP, SEXP u_2SEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP alpha0_j_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type alpha0_vec(alpha0_vecSEXP);
@@ -405,7 +405,7 @@ END_RCPP
 }
 // fnThetamjLogLik
 double fnThetamjLogLik(const double& theta_mj, const double& tau_j_2, const double& s_j, NumericVector r_vec, NumericVector mu_j_vec, NumericVector rep_K, NumericVector y_j_vec);
-RcppExport SEXP _anlpsb_fnThetamjLogLik(SEXP theta_mjSEXP, SEXP tau_j_2SEXP, SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnThetamjLogLik(SEXP theta_mjSEXP, SEXP tau_j_2SEXP, SEXP s_jSEXP, SEXP r_vecSEXP, SEXP mu_j_vecSEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -422,7 +422,7 @@ END_RCPP
 }
 // fnSampThetaMat
 void fnSampThetaMat(NumericMatrix Theta_mat, NumericVector tau_2_vec, NumericVector s_vec, NumericVector r_vec, NumericMatrix Mu_mat, NumericVector rep_K, NumericMatrix K_mat, NumericMatrix Y_mat, const double& theta_mj_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampThetaMat(SEXP Theta_matSEXP, SEXP tau_2_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP rep_KSEXP, SEXP K_matSEXP, SEXP Y_matSEXP, SEXP theta_mj_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampThetaMat(SEXP Theta_matSEXP, SEXP tau_2_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP Mu_matSEXP, SEXP rep_KSEXP, SEXP K_matSEXP, SEXP Y_matSEXP, SEXP theta_mj_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Theta_mat(Theta_matSEXP);
@@ -440,7 +440,7 @@ END_RCPP
 }
 // fnSampSigma2Vec
 void fnSampSigma2Vec(NumericVector sigma_2_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector iota_vec, Function rtigamma, const double& a_sigma, const double& b_sigma);
-RcppExport SEXP _anlpsb_fnSampSigma2Vec(SEXP sigma_2_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP iota_vecSEXP, SEXP rtigammaSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP) {
+RcppExport SEXP _anlpsbff_fnSampSigma2Vec(SEXP sigma_2_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP iota_vecSEXP, SEXP rtigammaSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type sigma_2_vec(sigma_2_vecSEXP);
@@ -456,7 +456,7 @@ END_RCPP
 }
 // fnMujVecFromBetajp
 NumericVector fnMujVecFromBetajp(const double& beta_jp, const double& beta_jp_curr, NumericVector mu_j_vec_curr, NumericVector z_p_vec);
-RcppExport SEXP _anlpsb_fnMujVecFromBetajp(SEXP beta_jpSEXP, SEXP beta_jp_currSEXP, SEXP mu_j_vec_currSEXP, SEXP z_p_vecSEXP) {
+RcppExport SEXP _anlpsbff_fnMujVecFromBetajp(SEXP beta_jpSEXP, SEXP beta_jp_currSEXP, SEXP mu_j_vec_currSEXP, SEXP z_p_vecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -470,7 +470,7 @@ END_RCPP
 }
 // fnBetajpPriorLik
 double fnBetajpPriorLik(const double& beta_jp, const double& sigma_p_2, const double& iota_p);
-RcppExport SEXP _anlpsb_fnBetajpPriorLik(SEXP beta_jpSEXP, SEXP sigma_p_2SEXP, SEXP iota_pSEXP) {
+RcppExport SEXP _anlpsbff_fnBetajpPriorLik(SEXP beta_jpSEXP, SEXP sigma_p_2SEXP, SEXP iota_pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -483,7 +483,7 @@ END_RCPP
 }
 // fnBetajpLogLik
 double fnBetajpLogLik(const double& beta_jp, NumericVector mu_j_vec, const double& s_j, NumericVector r_vec, const double& sigma_p_2, NumericVector rep_K, NumericVector y_j_vec, const double& iota_p);
-RcppExport SEXP _anlpsb_fnBetajpLogLik(SEXP beta_jpSEXP, SEXP mu_j_vecSEXP, SEXP s_jSEXP, SEXP r_vecSEXP, SEXP sigma_p_2SEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP, SEXP iota_pSEXP) {
+RcppExport SEXP _anlpsbff_fnBetajpLogLik(SEXP beta_jpSEXP, SEXP mu_j_vecSEXP, SEXP s_jSEXP, SEXP r_vecSEXP, SEXP sigma_p_2SEXP, SEXP rep_KSEXP, SEXP y_j_vecSEXP, SEXP iota_pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -501,7 +501,7 @@ END_RCPP
 }
 // fnProposeBetajp
 double fnProposeBetajp(int gamma_jp, double sigma_p, double iota_p);
-RcppExport SEXP _anlpsb_fnProposeBetajp(SEXP gamma_jpSEXP, SEXP sigma_pSEXP, SEXP iota_pSEXP) {
+RcppExport SEXP _anlpsbff_fnProposeBetajp(SEXP gamma_jpSEXP, SEXP sigma_pSEXP, SEXP iota_pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -514,7 +514,7 @@ END_RCPP
 }
 // fnSampBetaMat
 void fnSampBetaMat(NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector r_vec, NumericMatrix X_mat, NumericVector sigma_2_vec, NumericVector rep_K, NumericMatrix Y_mat, NumericVector iota_vec, const double& beta_jp_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampBetaMat(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP iota_vecSEXP, SEXP beta_jp_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampBetaMat(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP rep_KSEXP, SEXP Y_matSEXP, SEXP iota_vecSEXP, SEXP beta_jp_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
@@ -534,7 +534,7 @@ END_RCPP
 }
 // fnProposeBetajpHat
 double fnProposeBetajpHat(const double& beta_jp_curr, const double& iota_p, const double& sigma_p_2);
-RcppExport SEXP _anlpsb_fnProposeBetajpHat(SEXP beta_jp_currSEXP, SEXP iota_pSEXP, SEXP sigma_p_2SEXP) {
+RcppExport SEXP _anlpsbff_fnProposeBetajpHat(SEXP beta_jp_currSEXP, SEXP iota_pSEXP, SEXP sigma_p_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -547,7 +547,7 @@ END_RCPP
 }
 // fnLogGammaPrior
 double fnLogGammaPrior(int gamma_jp, double pi0_p, double pi1_p);
-RcppExport SEXP _anlpsb_fnLogGammaPrior(SEXP gamma_jpSEXP, SEXP pi0_pSEXP, SEXP pi1_pSEXP) {
+RcppExport SEXP _anlpsbff_fnLogGammaPrior(SEXP gamma_jpSEXP, SEXP pi0_pSEXP, SEXP pi1_pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -560,7 +560,7 @@ END_RCPP
 }
 // fnLogBetajpTransition
 double fnLogBetajpTransition(const double& beta_jp_hat, const double& gamma_jp, const double& iota_p, const double& sigma_p_2);
-RcppExport SEXP _anlpsb_fnLogBetajpTransition(SEXP beta_jp_hatSEXP, SEXP gamma_jpSEXP, SEXP iota_pSEXP, SEXP sigma_p_2SEXP) {
+RcppExport SEXP _anlpsbff_fnLogBetajpTransition(SEXP beta_jp_hatSEXP, SEXP gamma_jpSEXP, SEXP iota_pSEXP, SEXP sigma_p_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -574,7 +574,7 @@ END_RCPP
 }
 // fnSampBetaMatGammaMatJoint
 void fnSampBetaMatGammaMatJoint(NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericMatrix Mu_mat, NumericMatrix X_mat, NumericVector sigma_2_vec, NumericVector iota_vec, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector pi0_vec, NumericVector pi1_vec, NumericMatrix Y_mat, const double& beta_jp_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampBetaMatGammaMatJoint(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampBetaMatGammaMatJoint(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
@@ -596,7 +596,7 @@ END_RCPP
 }
 // fnBetaGammaAddSwpDel
 void fnBetaGammaAddSwpDel(NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector sigma_2_vec, NumericVector iota_vec, NumericMatrix Mu_mat, NumericMatrix X_mat, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector pi0_vec, NumericVector pi1_vec, NumericMatrix Y_mat);
-RcppExport SEXP _anlpsb_fnBetaGammaAddSwpDel(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP) {
+RcppExport SEXP _anlpsbff_fnBetaGammaAddSwpDel(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
@@ -617,7 +617,7 @@ END_RCPP
 }
 // fnIotapLogLik
 double fnIotapLogLik(const double& iota_p, NumericVector beta_p_vec, NumericVector gamma_p_vec, const double& sigma_p_2, const double& smallest_beta, const double& a_iota, const double& b_iota);
-RcppExport SEXP _anlpsb_fnIotapLogLik(SEXP iota_pSEXP, SEXP beta_p_vecSEXP, SEXP gamma_p_vecSEXP, SEXP sigma_p_2SEXP, SEXP smallest_betaSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP) {
+RcppExport SEXP _anlpsbff_fnIotapLogLik(SEXP iota_pSEXP, SEXP beta_p_vecSEXP, SEXP gamma_p_vecSEXP, SEXP sigma_p_2SEXP, SEXP smallest_betaSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -634,7 +634,7 @@ END_RCPP
 }
 // fnSampIotaVec
 void fnSampIotaVec(NumericVector iota_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericVector sigma_2_vec, const double& a_iota, const double& b_iota, const double& iota_p_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampIotaVec(SEXP iota_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP sigma_2_vecSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP, SEXP iota_p_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampIotaVec(SEXP iota_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP sigma_2_vecSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP, SEXP iota_p_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type iota_vec(iota_vecSEXP);
@@ -650,7 +650,7 @@ END_RCPP
 }
 // fnGetCurrCat
 double fnGetCurrCat(NumericVector categorical_vector);
-RcppExport SEXP _anlpsb_fnGetCurrCat(SEXP categorical_vectorSEXP) {
+RcppExport SEXP _anlpsbff_fnGetCurrCat(SEXP categorical_vectorSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -661,7 +661,7 @@ END_RCPP
 }
 // fnImputeZ
 void fnImputeZ(NumericMatrix X_mat, NumericMatrix Miss_var_ind_mat, NumericVector max_miss_cat_vec, NumericVector first_p_missing_idx1_vec, NumericMatrix Mu_mat, NumericMatrix Beta_mat, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector rep_K_cumsum, NumericMatrix Y_mat);
-RcppExport SEXP _anlpsb_fnImputeZ(SEXP X_matSEXP, SEXP Miss_var_ind_matSEXP, SEXP max_miss_cat_vecSEXP, SEXP first_p_missing_idx1_vecSEXP, SEXP Mu_matSEXP, SEXP Beta_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP rep_K_cumsumSEXP, SEXP Y_matSEXP) {
+RcppExport SEXP _anlpsbff_fnImputeZ(SEXP X_matSEXP, SEXP Miss_var_ind_matSEXP, SEXP max_miss_cat_vecSEXP, SEXP first_p_missing_idx1_vecSEXP, SEXP Mu_matSEXP, SEXP Beta_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP rep_K_cumsumSEXP, SEXP Y_matSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type X_mat(X_matSEXP);
@@ -681,7 +681,7 @@ END_RCPP
 }
 // fnDLogInvGamma
 double fnDLogInvGamma(const double& x, const double& a, const double& b);
-RcppExport SEXP _anlpsb_fnDLogInvGamma(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP) {
+RcppExport SEXP _anlpsbff_fnDLogInvGamma(SEXP xSEXP, SEXP aSEXP, SEXP bSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -694,7 +694,7 @@ END_RCPP
 }
 // fnIotapSigmapJointLogLik
 double fnIotapSigmapJointLogLik(const double& iota_p, const double& sigma_p_2, NumericVector beta_p_vec, NumericVector gamma_p_vec, NumericMatrix Mu_mat, NumericVector s_vec, NumericVector r_vec, const double& pi0_p, const double& pi1_p, NumericVector rep_K, const double& a_iota, const double& b_iota, const double& a_sigma, const double& b_sigma, NumericMatrix Y_mat);
-RcppExport SEXP _anlpsb_fnIotapSigmapJointLogLik(SEXP iota_pSEXP, SEXP sigma_p_2SEXP, SEXP beta_p_vecSEXP, SEXP gamma_p_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP pi0_pSEXP, SEXP pi1_pSEXP, SEXP rep_KSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP, SEXP Y_matSEXP) {
+RcppExport SEXP _anlpsbff_fnIotapSigmapJointLogLik(SEXP iota_pSEXP, SEXP sigma_p_2SEXP, SEXP beta_p_vecSEXP, SEXP gamma_p_vecSEXP, SEXP Mu_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP pi0_pSEXP, SEXP pi1_pSEXP, SEXP rep_KSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP, SEXP Y_matSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -719,7 +719,7 @@ END_RCPP
 }
 // fnConvertBetaHat
 double fnConvertBetaHat(double& beta_jp_hat, const double& iota_p, const double& sigma_p_2);
-RcppExport SEXP _anlpsb_fnConvertBetaHat(SEXP beta_jp_hatSEXP, SEXP iota_pSEXP, SEXP sigma_p_2SEXP) {
+RcppExport SEXP _anlpsbff_fnConvertBetaHat(SEXP beta_jp_hatSEXP, SEXP iota_pSEXP, SEXP sigma_p_2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -732,7 +732,7 @@ END_RCPP
 }
 // fnSampIotaVecSigma2VecJoint
 void fnSampIotaVecSigma2VecJoint(NumericVector sigma_2_vec, NumericVector iota_vec, NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericMatrix Mu_mat, NumericMatrix X_mat, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector pi0_vec, NumericVector pi1_vec, const double& a_sigma, const double& b_sigma, const double& a_iota, const double& b_iota, NumericMatrix Y_mat, const double& iota_p_joint_proposal_sd, const double& sigma_p_2_joint_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampIotaVecSigma2VecJoint(SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP, SEXP Y_matSEXP, SEXP iota_p_joint_proposal_sdSEXP, SEXP sigma_p_2_joint_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampIotaVecSigma2VecJoint(SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP a_sigmaSEXP, SEXP b_sigmaSEXP, SEXP a_iotaSEXP, SEXP b_iotaSEXP, SEXP Y_matSEXP, SEXP iota_p_joint_proposal_sdSEXP, SEXP sigma_p_2_joint_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type sigma_2_vec(sigma_2_vecSEXP);
@@ -759,7 +759,7 @@ END_RCPP
 }
 // fnSampBetaMatGammaMatJointWholeOtu
 void fnSampBetaMatGammaMatJointWholeOtu(NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericMatrix Mu_mat, NumericMatrix X_mat, NumericVector sigma_2_vec, NumericVector iota_vec, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector pi0_vec, NumericVector pi1_vec, NumericMatrix Y_mat, const double& beta_jp_joint_otu_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampBetaMatGammaMatJointWholeOtu(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_joint_otu_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampBetaMatGammaMatJointWholeOtu(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_joint_otu_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
@@ -781,7 +781,7 @@ END_RCPP
 }
 // fnSampBetaMatGammaMatJointWholeOtu2
 void fnSampBetaMatGammaMatJointWholeOtu2(NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericMatrix Mu_mat, NumericMatrix X_mat, NumericVector sigma_2_vec, NumericVector iota_vec, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector pi0_vec, NumericVector pi1_vec, NumericMatrix Y_mat, const double& beta_jp_joint_otu_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampBetaMatGammaMatJointWholeOtu2(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_joint_otu_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampBetaMatGammaMatJointWholeOtu2(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_joint_otu_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
@@ -803,7 +803,7 @@ END_RCPP
 }
 // fnSampBetaMatGammaMatJointWholeOtu3
 void fnSampBetaMatGammaMatJointWholeOtu3(NumericMatrix Beta_mat, NumericMatrix Gamma_mat, NumericMatrix Mu_mat, NumericMatrix X_mat, NumericVector sigma_2_vec, NumericVector iota_vec, NumericVector s_vec, NumericVector r_vec, NumericVector rep_K, NumericVector pi0_vec, NumericVector pi1_vec, NumericMatrix Y_mat, const double& beta_jp_joint_otu_proposal_sd);
-RcppExport SEXP _anlpsb_fnSampBetaMatGammaMatJointWholeOtu3(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_joint_otu_proposal_sdSEXP) {
+RcppExport SEXP _anlpsbff_fnSampBetaMatGammaMatJointWholeOtu3(SEXP Beta_matSEXP, SEXP Gamma_matSEXP, SEXP Mu_matSEXP, SEXP X_matSEXP, SEXP sigma_2_vecSEXP, SEXP iota_vecSEXP, SEXP s_vecSEXP, SEXP r_vecSEXP, SEXP rep_KSEXP, SEXP pi0_vecSEXP, SEXP pi1_vecSEXP, SEXP Y_matSEXP, SEXP beta_jp_joint_otu_proposal_sdSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type Beta_mat(Beta_matSEXP);
@@ -825,56 +825,56 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_anlpsb_fnLogLikNoGamma", (DL_FUNC) &_anlpsb_fnLogLikNoGamma, 4},
-    {"_anlpsb_fnLogLikNoFac", (DL_FUNC) &_anlpsb_fnLogLikNoFac, 4},
-    {"_anlpsb_fnOtuLogLikNoGamma", (DL_FUNC) &_anlpsb_fnOtuLogLikNoGamma, 5},
-    {"_anlpsb_fnOtuLogLikNoFac", (DL_FUNC) &_anlpsb_fnOtuLogLikNoFac, 5},
-    {"_anlpsb_fnTimepointLogLikNoGamma", (DL_FUNC) &_anlpsb_fnTimepointLogLikNoGamma, 4},
-    {"_anlpsb_acceptProposal", (DL_FUNC) &_anlpsb_acceptProposal, 4},
-    {"_anlpsb_fnSjTildeLogLik", (DL_FUNC) &_anlpsb_fnSjTildeLogLik, 7},
-    {"_anlpsb_fnSampSVec", (DL_FUNC) &_anlpsb_fnSampSVec, 9},
-    {"_anlpsb_fnWlLogLik", (DL_FUNC) &_anlpsb_fnWlLogLik, 10},
-    {"_anlpsb_fnSampWVec", (DL_FUNC) &_anlpsb_fnSampWVec, 10},
-    {"_anlpsb_fnSampEtaVec", (DL_FUNC) &_anlpsb_fnSampEtaVec, 8},
-    {"_anlpsb_fnSampC", (DL_FUNC) &_anlpsb_fnSampC, 6},
-    {"_anlpsb_fnSampCVec", (DL_FUNC) &_anlpsb_fnSampCVec, 8},
-    {"_anlpsb_fnSampLambdaVec", (DL_FUNC) &_anlpsb_fnSampLambdaVec, 7},
-    {"_anlpsb_fnRtkTildeLogLik", (DL_FUNC) &_anlpsb_fnRtkTildeLogLik, 9},
-    {"_anlpsb_fnSampRVec", (DL_FUNC) &_anlpsb_fnSampRVec, 13},
-    {"_anlpsb_fnSampRVecJoint", (DL_FUNC) &_anlpsb_fnSampRVecJoint, 13},
-    {"_anlpsb_fnSampRVecJointVertical", (DL_FUNC) &_anlpsb_fnSampRVecJointVertical, 13},
-    {"_anlpsb_fnAlpha0jLogLik", (DL_FUNC) &_anlpsb_fnAlpha0jLogLik, 11},
-    {"_anlpsb_fnSampAlpha0Vec", (DL_FUNC) &_anlpsb_fnSampAlpha0Vec, 13},
-    {"_anlpsb_fnSampAlpha0VecJoint", (DL_FUNC) &_anlpsb_fnSampAlpha0VecJoint, 13},
-    {"_anlpsb_fnSampAlpha0VecJointVertical", (DL_FUNC) &_anlpsb_fnSampAlpha0VecJointVertical, 13},
-    {"_anlpsb_fnThetamjLogLik", (DL_FUNC) &_anlpsb_fnThetamjLogLik, 7},
-    {"_anlpsb_fnSampThetaMat", (DL_FUNC) &_anlpsb_fnSampThetaMat, 9},
-    {"_anlpsb_fnSampSigma2Vec", (DL_FUNC) &_anlpsb_fnSampSigma2Vec, 7},
-    {"_anlpsb_fnMujVecFromBetajp", (DL_FUNC) &_anlpsb_fnMujVecFromBetajp, 4},
-    {"_anlpsb_fnBetajpPriorLik", (DL_FUNC) &_anlpsb_fnBetajpPriorLik, 3},
-    {"_anlpsb_fnBetajpLogLik", (DL_FUNC) &_anlpsb_fnBetajpLogLik, 8},
-    {"_anlpsb_fnProposeBetajp", (DL_FUNC) &_anlpsb_fnProposeBetajp, 3},
-    {"_anlpsb_fnSampBetaMat", (DL_FUNC) &_anlpsb_fnSampBetaMat, 11},
-    {"_anlpsb_fnProposeBetajpHat", (DL_FUNC) &_anlpsb_fnProposeBetajpHat, 3},
-    {"_anlpsb_fnLogGammaPrior", (DL_FUNC) &_anlpsb_fnLogGammaPrior, 3},
-    {"_anlpsb_fnLogBetajpTransition", (DL_FUNC) &_anlpsb_fnLogBetajpTransition, 4},
-    {"_anlpsb_fnSampBetaMatGammaMatJoint", (DL_FUNC) &_anlpsb_fnSampBetaMatGammaMatJoint, 13},
-    {"_anlpsb_fnBetaGammaAddSwpDel", (DL_FUNC) &_anlpsb_fnBetaGammaAddSwpDel, 12},
-    {"_anlpsb_fnIotapLogLik", (DL_FUNC) &_anlpsb_fnIotapLogLik, 7},
-    {"_anlpsb_fnSampIotaVec", (DL_FUNC) &_anlpsb_fnSampIotaVec, 7},
-    {"_anlpsb_fnGetCurrCat", (DL_FUNC) &_anlpsb_fnGetCurrCat, 1},
-    {"_anlpsb_fnImputeZ", (DL_FUNC) &_anlpsb_fnImputeZ, 11},
-    {"_anlpsb_fnDLogInvGamma", (DL_FUNC) &_anlpsb_fnDLogInvGamma, 3},
-    {"_anlpsb_fnIotapSigmapJointLogLik", (DL_FUNC) &_anlpsb_fnIotapSigmapJointLogLik, 15},
-    {"_anlpsb_fnConvertBetaHat", (DL_FUNC) &_anlpsb_fnConvertBetaHat, 3},
-    {"_anlpsb_fnSampIotaVecSigma2VecJoint", (DL_FUNC) &_anlpsb_fnSampIotaVecSigma2VecJoint, 18},
-    {"_anlpsb_fnSampBetaMatGammaMatJointWholeOtu", (DL_FUNC) &_anlpsb_fnSampBetaMatGammaMatJointWholeOtu, 13},
-    {"_anlpsb_fnSampBetaMatGammaMatJointWholeOtu2", (DL_FUNC) &_anlpsb_fnSampBetaMatGammaMatJointWholeOtu2, 13},
-    {"_anlpsb_fnSampBetaMatGammaMatJointWholeOtu3", (DL_FUNC) &_anlpsb_fnSampBetaMatGammaMatJointWholeOtu3, 13},
+    {"_anlpsbff_fnLogLikNoGamma", (DL_FUNC) &_anlpsbff_fnLogLikNoGamma, 4},
+    {"_anlpsbff_fnLogLikNoFac", (DL_FUNC) &_anlpsbff_fnLogLikNoFac, 4},
+    {"_anlpsbff_fnOtuLogLikNoGamma", (DL_FUNC) &_anlpsbff_fnOtuLogLikNoGamma, 5},
+    {"_anlpsbff_fnOtuLogLikNoFac", (DL_FUNC) &_anlpsbff_fnOtuLogLikNoFac, 5},
+    {"_anlpsbff_fnTimepointLogLikNoGamma", (DL_FUNC) &_anlpsbff_fnTimepointLogLikNoGamma, 4},
+    {"_anlpsbff_acceptProposal", (DL_FUNC) &_anlpsbff_acceptProposal, 4},
+    {"_anlpsbff_fnSjTildeLogLik", (DL_FUNC) &_anlpsbff_fnSjTildeLogLik, 7},
+    {"_anlpsbff_fnSampSVec", (DL_FUNC) &_anlpsbff_fnSampSVec, 9},
+    {"_anlpsbff_fnWlLogLik", (DL_FUNC) &_anlpsbff_fnWlLogLik, 10},
+    {"_anlpsbff_fnSampWVec", (DL_FUNC) &_anlpsbff_fnSampWVec, 10},
+    {"_anlpsbff_fnSampEtaVec", (DL_FUNC) &_anlpsbff_fnSampEtaVec, 8},
+    {"_anlpsbff_fnSampC", (DL_FUNC) &_anlpsbff_fnSampC, 6},
+    {"_anlpsbff_fnSampCVec", (DL_FUNC) &_anlpsbff_fnSampCVec, 8},
+    {"_anlpsbff_fnSampLambdaVec", (DL_FUNC) &_anlpsbff_fnSampLambdaVec, 7},
+    {"_anlpsbff_fnRtkTildeLogLik", (DL_FUNC) &_anlpsbff_fnRtkTildeLogLik, 9},
+    {"_anlpsbff_fnSampRVec", (DL_FUNC) &_anlpsbff_fnSampRVec, 13},
+    {"_anlpsbff_fnSampRVecJoint", (DL_FUNC) &_anlpsbff_fnSampRVecJoint, 13},
+    {"_anlpsbff_fnSampRVecJointVertical", (DL_FUNC) &_anlpsbff_fnSampRVecJointVertical, 13},
+    {"_anlpsbff_fnAlpha0jLogLik", (DL_FUNC) &_anlpsbff_fnAlpha0jLogLik, 11},
+    {"_anlpsbff_fnSampAlpha0Vec", (DL_FUNC) &_anlpsbff_fnSampAlpha0Vec, 13},
+    {"_anlpsbff_fnSampAlpha0VecJoint", (DL_FUNC) &_anlpsbff_fnSampAlpha0VecJoint, 13},
+    {"_anlpsbff_fnSampAlpha0VecJointVertical", (DL_FUNC) &_anlpsbff_fnSampAlpha0VecJointVertical, 13},
+    {"_anlpsbff_fnThetamjLogLik", (DL_FUNC) &_anlpsbff_fnThetamjLogLik, 7},
+    {"_anlpsbff_fnSampThetaMat", (DL_FUNC) &_anlpsbff_fnSampThetaMat, 9},
+    {"_anlpsbff_fnSampSigma2Vec", (DL_FUNC) &_anlpsbff_fnSampSigma2Vec, 7},
+    {"_anlpsbff_fnMujVecFromBetajp", (DL_FUNC) &_anlpsbff_fnMujVecFromBetajp, 4},
+    {"_anlpsbff_fnBetajpPriorLik", (DL_FUNC) &_anlpsbff_fnBetajpPriorLik, 3},
+    {"_anlpsbff_fnBetajpLogLik", (DL_FUNC) &_anlpsbff_fnBetajpLogLik, 8},
+    {"_anlpsbff_fnProposeBetajp", (DL_FUNC) &_anlpsbff_fnProposeBetajp, 3},
+    {"_anlpsbff_fnSampBetaMat", (DL_FUNC) &_anlpsbff_fnSampBetaMat, 11},
+    {"_anlpsbff_fnProposeBetajpHat", (DL_FUNC) &_anlpsbff_fnProposeBetajpHat, 3},
+    {"_anlpsbff_fnLogGammaPrior", (DL_FUNC) &_anlpsbff_fnLogGammaPrior, 3},
+    {"_anlpsbff_fnLogBetajpTransition", (DL_FUNC) &_anlpsbff_fnLogBetajpTransition, 4},
+    {"_anlpsbff_fnSampBetaMatGammaMatJoint", (DL_FUNC) &_anlpsbff_fnSampBetaMatGammaMatJoint, 13},
+    {"_anlpsbff_fnBetaGammaAddSwpDel", (DL_FUNC) &_anlpsbff_fnBetaGammaAddSwpDel, 12},
+    {"_anlpsbff_fnIotapLogLik", (DL_FUNC) &_anlpsbff_fnIotapLogLik, 7},
+    {"_anlpsbff_fnSampIotaVec", (DL_FUNC) &_anlpsbff_fnSampIotaVec, 7},
+    {"_anlpsbff_fnGetCurrCat", (DL_FUNC) &_anlpsbff_fnGetCurrCat, 1},
+    {"_anlpsbff_fnImputeZ", (DL_FUNC) &_anlpsbff_fnImputeZ, 11},
+    {"_anlpsbff_fnDLogInvGamma", (DL_FUNC) &_anlpsbff_fnDLogInvGamma, 3},
+    {"_anlpsbff_fnIotapSigmapJointLogLik", (DL_FUNC) &_anlpsbff_fnIotapSigmapJointLogLik, 15},
+    {"_anlpsbff_fnConvertBetaHat", (DL_FUNC) &_anlpsbff_fnConvertBetaHat, 3},
+    {"_anlpsbff_fnSampIotaVecSigma2VecJoint", (DL_FUNC) &_anlpsbff_fnSampIotaVecSigma2VecJoint, 18},
+    {"_anlpsbff_fnSampBetaMatGammaMatJointWholeOtu", (DL_FUNC) &_anlpsbff_fnSampBetaMatGammaMatJointWholeOtu, 13},
+    {"_anlpsbff_fnSampBetaMatGammaMatJointWholeOtu2", (DL_FUNC) &_anlpsbff_fnSampBetaMatGammaMatJointWholeOtu2, 13},
+    {"_anlpsbff_fnSampBetaMatGammaMatJointWholeOtu3", (DL_FUNC) &_anlpsbff_fnSampBetaMatGammaMatJointWholeOtu3, 13},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_anlpsb(DllInfo *dll) {
+RcppExport void R_init_anlpsbff(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

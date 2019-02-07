@@ -1,4 +1,4 @@
-#' @useDynLib anlpsb
+#' @useDynLib anlpsbff
 #' @importFrom Rcpp sourceCpp
 #' @importFrom RcppTN rtn
 NULL
@@ -11,7 +11,7 @@ NULL
 #' @references \emph{A Bayesian Sparse Multivariate Regression Model with Asymmetric Nonlocal Priors for Microbiome Data}
 #'
 #' @docType package
-#' @name anlpsb
+#' @name anlpsbff
 #' @title ANLP-SB
 NULL
 
@@ -88,7 +88,7 @@ NULL
 #' @references \emph{A Bayesian Sparse Multivariate Regression Model with Asymmetric Nonlocal Priors for Microbiome Data}
 #'
 #' @export
-anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.cat.vec=NULL, first.p.missing.idx1.vec=NULL, PRIOR, SETTINGS) {
+anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.cat.vec=NULL, first.p.missing.idx1.vec=NULL, PRIOR, SETTINGS, fftempdir) {
     J.dim <- ncol(Y.mat) # Number of OTUs
     P.dim <- ncol(X.mat) # Number of covariates
     n.dim <- length(time) # Number of time points
@@ -190,38 +190,39 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
     rm(sigma.2.hat.vec)
 
     # MCMC --------------------------------------------------------------------
+    options(fftempdir=fftempdir)
     SAMPS <- list()
     ## s.j
-    SAMPS$s.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim)
-    SAMPS$h.scal <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=1)
-    SAMPS$var.sig.2 <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=1)
+    SAMPS$s.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim))
+    # SAMPS$h.scal <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, 1))
+    # SAMPS$var.sig.2 <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, 1))
     ## r.tk
-    SAMPS$psi.r.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$L.r.trunc)
-    SAMPS$w.r.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$L.r.trunc)
-    SAMPS$eta.r.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$L.r.trunc)
-    SAMPS$c.r.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=Tot_N)
-    SAMPS$lambda.r.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=Tot_N)
-    SAMPS$r.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=Tot_N)
+    # SAMPS$psi.r.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$L.r.trunc))
+    # SAMPS$w.r.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$L.r.trunc))
+    # SAMPS$eta.r.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$L.r.trunc))
+    # SAMPS$c.r.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, Tot_N))
+    # SAMPS$lambda.r.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, Tot_N))
+    SAMPS$r.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, Tot_N))
     ## alpha0.j
-    SAMPS$psi.alpha0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$L.alpha0.trunc)
-    SAMPS$w.alpha0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$L.alpha0.trunc)
-    SAMPS$eta.alpha0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$L.alpha0.trunc)
-    SAMPS$c.alpha0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim)
-    SAMPS$lambda.alpha0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim)
-    SAMPS$alpha0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim)
+    # SAMPS$psi.alpha0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$L.alpha0.trunc))
+    # SAMPS$w.alpha0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$L.alpha0.trunc))
+    # SAMPS$eta.alpha0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$L.alpha0.trunc))
+    # SAMPS$c.alpha0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim))
+    # SAMPS$lambda.alpha0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim))
+    SAMPS$alpha0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim))
     ## theta.mj
-    SAMPS$Theta.mat <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=SETTINGS$M*J.dim)
-    SAMPS$tau.2.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim)
+    SAMPS$Theta.mat <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, SETTINGS$M*J.dim))
+    # SAMPS$tau.2.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim))
     ## beta.jp
-    SAMPS$Beta.mat <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim*P.dim)
-    SAMPS$Gamma.mat <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=J.dim*P.dim)
-    SAMPS$iota.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=P.dim)
-    SAMPS$sigma.2.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=P.dim)
+    SAMPS$Beta.mat <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim*P.dim))
+    SAMPS$Gamma.mat <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, J.dim*P.dim))
+    # SAMPS$iota.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, P.dim))
+    # SAMPS$sigma.2.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, P.dim))
     ## pi0/pi1
-    SAMPS$pi0.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=P.dim)
-    SAMPS$pi1.vec <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=P.dim)
+    SAMPS$pi0.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, P.dim))
+    # SAMPS$pi1.vec <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, P.dim))
     ## Mu.ij
-    SAMPS$Mu.mat <- matrix(numeric(0), nrow=SETTINGS$n.mcmc, ncol=n.dim*J.dim)
+    SAMPS$Mu.mat <- ff::ff(numeric(0), dim=c(SETTINGS$n.mcmc, n.dim*J.dim))
     for(b in 1:SETTINGS$n.mcmc) {
         for(thin.iter in 1:SETTINGS$n.thin) {
             ## Impute missing covariates
@@ -292,33 +293,33 @@ anlpsbm <- function(Y.mat, X.mat, time, rep.K, Miss.var.ind.mat=NULL, max.miss.c
         ### Save samples
         ## s.j
         SAMPS$s.vec[b, ] <- s.vec
-        SAMPS$h.scal[b, ] <- h.scal
-        SAMPS$var.sig.2[b, ] <- var.sig.2
+        # SAMPS$h.scal[b, ] <- h.scal
+        # SAMPS$var.sig.2[b, ] <- var.sig.2
         ## r.tk
-        SAMPS$psi.r.vec[b, ] <- psi.r.vec
-        SAMPS$w.r.vec[b, ] <- w.r.vec
-        SAMPS$eta.r.vec[b, ] <- eta.r.vec
-        SAMPS$c.r.vec[b, ] <- c.r.vec
-        SAMPS$lambda.r.vec[b, ] <- lambda.r.vec
+        # SAMPS$psi.r.vec[b, ] <- psi.r.vec
+        # SAMPS$w.r.vec[b, ] <- w.r.vec
+        # SAMPS$eta.r.vec[b, ] <- eta.r.vec
+        # SAMPS$c.r.vec[b, ] <- c.r.vec
+        # SAMPS$lambda.r.vec[b, ] <- lambda.r.vec
         SAMPS$r.vec[b, ] <- r.vec
         ## alpha0.j
-        SAMPS$psi.alpha0.vec[b, ] <- psi.alpha0.vec
-        SAMPS$w.alpha0.vec[b, ] <- w.alpha0.vec
-        SAMPS$eta.alpha0.vec[b, ] <- eta.alpha0.vec
-        SAMPS$c.alpha0.vec[b, ] <- c.alpha0.vec
-        SAMPS$lambda.alpha0.vec[b, ] <- lambda.alpha0.vec
+        # SAMPS$psi.alpha0.vec[b, ] <- psi.alpha0.vec
+        # SAMPS$w.alpha0.vec[b, ] <- w.alpha0.vec
+        # SAMPS$eta.alpha0.vec[b, ] <- eta.alpha0.vec
+        # SAMPS$c.alpha0.vec[b, ] <- c.alpha0.vec
+        # SAMPS$lambda.alpha0.vec[b, ] <- lambda.alpha0.vec
         SAMPS$alpha0.vec[b, ] <- alpha0.vec
         ## theta.mj
         SAMPS$Theta.mat[b, ] <- Theta.mat
-        SAMPS$tau.2.vec[b, ] <- tau.2.vec
+        # SAMPS$tau.2.vec[b, ] <- tau.2.vec
         ## beta.jp
         SAMPS$Beta.mat[b, ] <- Beta.mat
         SAMPS$Gamma.mat[b, ] <- Gamma.mat
-        SAMPS$iota.vec[b, ] <- iota.vec
-        SAMPS$sigma.2.vec[b, ] <- sigma.2.vec
+        # SAMPS$iota.vec[b, ] <- iota.vec
+        # SAMPS$sigma.2.vec[b, ] <- sigma.2.vec
         ## pi0/pi1
         SAMPS$pi0.vec[b, ] <- pi0.vec
-        SAMPS$pi1.vec[b, ] <- pi1.vec
+        # SAMPS$pi1.vec[b, ] <- pi1.vec
         ## mu.ij
         SAMPS$Mu.mat[b, ] <- Mu.mat
 

@@ -1,7 +1,7 @@
-Package: anlpsb
+Package: anlpsbff
 Type: Package
 Title: ANLP-SB Model for Count Data
-Version: 0.2.0
+Version: 0.3.0
 Author: Kurtis Shuler 
 Maintainer: Kurtis Shuler <kshuler@ucsc.edu>
 Description: Implementation of the ANLP-SB model described in the companion text
@@ -12,5 +12,5 @@ Encoding: UTF-8
 LazyData: true
 Depends: RcppTN
 LinkingTo: Rcpp, RcppTN
-Imports: Rcpp, RcppTN, arm
+Imports: Rcpp, RcppTN, arm, ff
 RoxygenNote: 6.1.0
